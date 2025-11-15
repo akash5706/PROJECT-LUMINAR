@@ -15,17 +15,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
+
 from django.urls import path
-from shop import views
-app_name="shop"
+from cart import views
+
+app_name = "cart"
+
 urlpatterns = [
-    path('',views.Categoryview.as_view(),name="categories"),
-    path('products/<int:i>',views.Productview.as_view(),name="products"),
-    path('productdetail/<int:i>',views.ProductDetailview.as_view(),name="productdetail"),
-    path('register/',views.Register.as_view(),name="register"),
-    path('login/',views.Userloginview.as_view(),name="userlogin"),
-    path('logout/',views.Userlogoutview.as_view(),name="userlogout"),
-    path('addcategory/',views.AddcategoryView.as_view(),name="addcategory"),
-    path('addproduct/',views.AddproductView.as_view(),name="addproduct"),
-    path('addstock/<int:i>',views.AddstockView.as_view(),name="addstock"),
+    path('addtocart/<int:i>', views.AddtoCart.as_view(), name="addtocart"),
+    path('cartview', views.Cartview.as_view(), name="cartview"),
+    path('minuscart/<int:i>',views.Minuscart.as_view(),name="minuscart"),
+    path('deletecart/<int:i>',views.Deletecart.as_view(),name="deletecart"),
+    path('checkout',views.Checkout.as_view(),name="checkout"),
+    path('payment_success/<i>',views.Payment_success.as_view(),name="payment_success"),
+    path('orders',views.Orders.as_view(),name="orders"),
 ]

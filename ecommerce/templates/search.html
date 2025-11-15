@@ -1,26 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container-fluid">
-    <div class="row">
-        <img src="{{categories.image.url}}" height="600px" width="10000px">
-    </div>
-</div>
-
-    <!-- Start Products  -->
-    <div class="products-box">
+search results
+<div class="products-box">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="title-all text-center">
-                        <h1>{{categories.name}}</h1>
-                        <p>{{categories.description}}</p>
-                    </div>
-                </div>
-            </div>
 
-
+            {% if products %}
             <div class="row special-list">
-                {% for j in categories.products.all %}
+                {% for j in products %}
                 <div class="col-lg-3 col-md-6 special-grid best-seller">
                     <div class="products-single fix">
                         <div class="box-img-hover" style="height:350px;">
@@ -44,7 +30,10 @@
                     </div>
                 </div>
                 {% endfor %}
+                {% else %}
+                <h2 class="text-danger text-center">NO RESULTS FOUND</h2>
+                {% endif %}
             </div>
         </div>
     </div>
-         {% endblock %}
+{% endblock %}
